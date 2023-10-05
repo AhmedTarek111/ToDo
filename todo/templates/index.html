@@ -1,6 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block body %}
 <body>
     <div id = "header">
         <div class="flexrow-container">
@@ -22,13 +23,12 @@
        
     <div>
         <p><span id="datetime"></span></p>
-        <script src="JS/time.js"></script>
+        <script src="{% static 'JS/time.js' %}"></script>
     </div>
 
   <div id="myUnOrdList">
         <ul class="todo-list">
             
-            (Basic Format)
             <div class="todo">
                 
                 <li>items added to this list:</li>
@@ -37,6 +37,6 @@
             </div>
         </ul>
     </div>
-   
-</body>
-</html>
+    
+{% endblock body %}
+
