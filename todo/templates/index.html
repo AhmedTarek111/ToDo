@@ -28,13 +28,13 @@
     </div>
 
   <div id="myUnOrdList">
-        <ul class="todo-list">
-            {% for task in task_detail %}
-                {% csrf_token %}      
+      {% for task in task_detail %}
+      {% csrf_token %}      
+      <ul class="todo-list">
                 <div class="todo">
                     
-                    <li>{{task.text}}</li>
-                    <a href=""><button class="check-btn standard-button" ><i class="fas fa-check" ></i></button></a>
+                    <li class="{% if task.status == 'completed' %}completed {% else %}{% endif %} ">{{task.text}}</li>
+                    <a href="update_status/{{task.id}}"><button class="check-btn standard-button" ><i class="fas fa-check" ></i></button></a>
                     <a href="delete_task_detail/{{task.id}}"><button class="delete-btn standard-button"  ><i class="fas fa-trash"></i></button></a>
                     <input type="text" name="task_detail_id" value="{{task.id}}" hidden>
                     
@@ -45,4 +45,3 @@
     </div>
     
 {% endblock body %}
-
