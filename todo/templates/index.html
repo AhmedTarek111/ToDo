@@ -13,8 +13,9 @@
     </div>
 
   <div id="form">
-        <form>
-            <input class="todo-input" type="text" placeholder="Add a task.">
+        <form method="post" action="{% url "todo:add_task_detail" %}">
+            {% csrf_token %}
+            <input class="todo-input" type="text" placeholder="Add a task." name="task_detail_text">
             <button class="todo-btn" type="submit">I Got This!</button>
         </form>
     </div>
@@ -28,13 +29,18 @@
 
   <div id="myUnOrdList">
         <ul class="todo-list">
-            
-            <div class="todo">
-                
-                <li>items added to this list:</li>
-                <button class="check-btn standard-button"><i class="fas fa-check"></i></button>
-                <button class="delete-btn standard-button"><i class="fas fa-trash"></i></button>
-            </div>
+            {% for task in task_detail %}
+                {% csrf_token %}      
+                <div class="todo">
+                    
+                    <li>{{task.text}}</li>
+                    <a href=""><button class="check-btn standard-button" ><i class="fas fa-check" ></i></button></a>
+                    <a href="delete_task_detail/{{task.id}}"><button class="delete-btn standard-button"  ><i class="fas fa-trash"></i></button></a>
+                    <input type="text" name="task_detail_id" value="{{task.id}}" hidden>
+                    
+                </div>
+        {% endfor %}
+          
         </ul>
     </div>
     

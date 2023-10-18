@@ -1,0 +1,24 @@
+
+  <h1>Delete Item</h1>
+  <p>Are you sure you want to delete this item?</p>
+  
+  <form method="POST">
+    {% csrf_token %}
+    <input type="hidden" name="item_id" value="{{ item_id }}">
+    <button type="button" id="confirm-delete">Delete</button>
+  </form>
+  
+    {% for task_detail in task_details %}
+        <a href="{% url 'todo:delete_task_detail' task_detail.pk %}">Delete</a>
+    {% endfor %}
+
+  <!-- JavaScript for confirmation dialog -->
+  <script>
+    document.getElementById('confirm-delete').addEventListener('click', function() {
+      var confirmDelete = confirm('Are you sure you want to delete this item?');
+      if (confirmDelete) {
+        // Submit the form if the user confirms
+        document.querySelector('form').submit();
+      }
+    });
+  </script>

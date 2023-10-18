@@ -11,8 +11,8 @@ const darkerTheme = document.querySelector('.darker-theme');
 // Event Listeners
 
 toDoBtn.addEventListener('click', addToDo);
-// toDoList.addEventListener('click', deletecheck);
-// document.addEventListener("DOMContentLoaded", getTodos);
+toDoList.addEventListener('click', deletecheck);
+document.addEventListener("DOMContentLoaded", getTodos);
 standardTheme.addEventListener('click', () => changeTheme('standard'));
 lightTheme.addEventListener('click', () => changeTheme('light'));
 darkerTheme.addEventListener('click', () => changeTheme('darker'));
@@ -33,11 +33,11 @@ function addToDo(event) {
     toDoDiv.classList.add('todo', `${savedTheme}-todo`);
 
     // Create LI
-    const newToDo = document.createElement('li');
-    if (toDoInput.value === '') {
-            alert("You must write something!");
-        } 
-    else {
+    // const newToDo = document.createElement('li');
+    // if (toDoInput.value === '') {
+    //         alert("You must write something!");
+    //     } 
+    // else {
         // // newToDo.innerText = "hey";
         // newToDo.innerText = toDoInput.value;
         // newToDo.classList.add('todo-item');
